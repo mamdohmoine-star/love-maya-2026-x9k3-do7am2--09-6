@@ -295,7 +295,8 @@ button{
       You are the most beautiful part of my life
     </p>
 
-    <button onclick="goToPage2()">Next ➡️</button>
+    <button onclick="startSite()">Next ➡️</button>
+
 
   </div>
 
@@ -422,6 +423,11 @@ button{
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
+function startSite(){
+  const music = document.getElementById("bgMusic");
+  music.play();
+  goToPage2();
+}
 
 function showMessage(n){
   for(let i=1;i<=4;i++){
