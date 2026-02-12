@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>My Valentine ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== عام ===== */
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #fcaecd, #fcd1d1);
+  overflow-x:hidden;
+}
+
+/* ===== الصفحات ===== */
+section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+}
+
+/* ===== الورقة ===== */
+.paper{
+  background: #fffaf0;
+  padding: 50px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  max-width:700px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+/* ===== النص ===== */
+h1{
+  font-size:42px;
+  color:#ff4d6d;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:26px;
+  line-height:1.6;
+  color:#333;
+}
+
+/* ===== القلوب ===== */
+.heart{
+  position:absolute;
+  font-size:25px;
+  color:#ff4d6d;
+  animation:up linear infinite;
+}
+
+@keyframes up{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-150vh);}
+}
+
+.h1{left:10%; animation-duration:10s;}
+.h2{left:25%; animation-duration:12s;}
+.h3{left:50%; animation-duration:14s;}
+.h4{left:70%; animation-duration:16s;}
+.h5{left:85%; animation-duration:11s;}
+
+/* ===== الكلمات ===== */
+.word{
+  position:fixed;
+  font-size:50px;
+  color:rgba(255,77,109,0.2);
+  animation:move linear infinite;
+  white-space:nowrap;
+  z-index:0;
+  pointer-events:none;
+}
+
+@keyframes move{
+  from{transform:translateX(-120%);}
+  to{transform:translateX(120vw);}
+}
+
+.w1{top:10%;animation-duration:15s;}
+.w2{top:30%;animation-duration:20s;}
+.w3{top:50%;animation-duration:18s;}
+.w4{top:70%;animation-duration:25s;}
+.w5{top:85%;animation-duration:22s;}
+
+/* ===== زر ===== */
+button{
+  margin-top:30px;
+  padding:12px 25px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#ff4d6d;
+  color:white;
+}
+
+/* ===== الظروف ===== */
+.envelopes{
+  display:flex;
+  gap:30px;
+  margin-top:30px;
+}
+
+.envelope{
+  width:140px;
+  height:95px;
+  background:#ff7a9e;
+  border-radius:10px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.envelope:hover{
+  transform:scale(1.1);
+}
+
+.envelope .flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#ff4d6d;
+  clip-path:polygon(0 0,100% 0,50% 55%);
+}
+
+.envelope .letter{
+  position:absolute;
+  bottom:0;
+  left:10%;
+  width:80%;
+  height:70%;
+  background:#fffaf0;
+  border-radius:5px;
+}
+
+.envelope .heart-icon{
+  position:absolute;
+  top:35px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:22px;
+}
+
+/* ===== الرسائل ===== */
+.message{
+  display:none;
+  margin-top:30px;
+  background:#fffaf0;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  max-width:400px;
+  font-size:18px;
+}
+
+/* ===== معرض الصور ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:30px;
+}
+
+.photo img{
+  width:180px;
+  height:180px;
+  object-fit:cover;
+  border-radius:20px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
+  transition:0.3s;
+}
+
+.photo img:hover{
+  transform:scale(1.1);
+}
+
+.memory{
+  display:none;
+  margin-top:25px;
+  font-size:22px;
+  background:#fffaf0;
+  padding:15px 25px;
+  border-radius:15px;
+}
+
+/* ===== أزرار النهاية ===== */
+.final-buttons{
+  margin-top:30px;
+  position:relative;
+  height:120px;
+}
+
+#noBtn{
+  position:absolute;
+  background:#555;
+}
+
+#yesBtn{
+  background:#ff4d6d;
+}
+
+.final-page{
+  width:100vw;
+  height:100vh;
+  position:relative;
+}
+
+.final-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.final-btns{
+  position:absolute;
+  bottom:80px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+}
+
+#loveMsg{
+  position:absolute;
+  bottom:200px;   /* نزّلها لتحت */
+  width:100%;
+  text-align:center;
+  font-size:40px;
+  color:#ff4d6d;
+  font-family:'Dancing Script', cursive;
+  text-shadow:0 0 15px pink;
+  z-index:10;
+}
+@keyframes loveBoom{
+  0%{
+    transform:scale(0) rotate(0deg);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(2) rotate(360deg);
+    opacity:0;
+  }
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- القلوب -->
+<div class="heart h1">❤️</div>
+<div class="heart h2">❤️</div>
+<div class="heart h3">❤️</div>
+<div class="heart h4">❤️</div>
+<div class="heart h5">❤️</div>
+
+<!-- الكلمات -->
+<div class="word w1">moztiii</div>
+<div class="word w2">Forever</div>
+<div class="word w3">do7a & meme</div>
+<div class="word w4">ba8ritiii</div>
+<div class="word w5">MOSHTI</div>
+
+
+<!-- الصفحة الأولى -->
+<section id="page1">
+
+  <div class="paper">
+
+    <h1>Just for mayoush ❤️</h1>
+
+    <p>
+      I made this page just for mayoushit albi.<br>
+      You are the most beautiful part of my life
+    </p>
+
+    <button onclick="goToPage2()">Next ➡️</button>
+
+  </div>
+
+</section>
+
+
+<!-- الصفحة الثانية -->
+<section id="page2" style="display:none;">
+
+  <h1>Click an Envelope 💌</h1>
+
+  <div class="envelopes">
+
+    <div class="envelope" onclick="showMessage(1)">
+      <div class="flap"></div>
+      <div class="letter"></div>
+      <div class="heart-icon">❤️</div>
+    </div>
+
+    <div class="envelope" onclick="showMessage(2)">
+      <div class="flap"></div>
+      <div class="letter"></div>
+      <div class="heart-icon">❤️</div>
+    </div>
+
+    <div class="envelope" onclick="showMessage(3)">
+      <div class="flap"></div>
+      <div class="letter"></div>
+      <div class="heart-icon">❤️</div>
+    </div>
+
+    <div class="envelope" onclick="showMessage(4)">
+      <div class="flap"></div>
+      <div class="letter"></div>
+      <div class="heart-icon">❤️</div>
+    </div>
+
+  </div>
+
+  <div id="msg1" class="message">❤️</div>
+  <div id="msg2" class="message">You are my sunshine ☀️</div>
+  <div id="msg3" class="message">I can’t wait to see you 💖</div>
+  <div id="msg4" class="message">Forever and always 💌</div>
+
+  <button onclick="goToPage3()">Next ➡️</button>
+
+</section>
+
+
+<!-- الصفحة الثالثة -->
+<section id="page3" style="display:none;">
+
+  <h1>Our Memories ❤️</h1>
+
+  <div class="gallery">
+
+    <div class="photo" onclick="showText(1)">
+      <img src="img1.jpg">
+    </div>
+
+    <div class="photo" onclick="showText(2)">
+      <img src="img2.jpg">
+    </div>
+
+    <div class="photo" onclick="showText(3)">
+      <img src="img3.jpg">
+    </div>
+
+    <div class="photo" onclick="showText(4)">
+      <img src="img4.jpg">
+    </div>
+
+  </div>
+
+  <div id="t1" class="memory">Home is wherever im with you❤️</div>
+  <div id="t2" class="memory">Life is better with you by my side💕</div>
+  <div id="t3" class="memory">I love you more than words can say🤍</div>
+  <div id="t4" class="memory">My eyes always search for you 😍</div>
+
+  <button onclick="goToPage4()">Next ➡️</button>
+
+</section>
+
+
+<!-- الصفحة الرابعة -->
+<section id="page4" style="display:none;">
+
+  <h1>Special Gift ❤️</h1>
+
+  <img src="special-maya.jpg" style="width:80%;max-width:600px;border-radius:20px;">
+
+
+  <button onclick="goToPage5()">Next ➡️</button>
+
+</section>
+
+
+<!-- الصفحة الخامسة -->
+<section id="page5" style="display:none;">
+
+  <div class="final-page">
+
+    <img src="final.jpg" class="final-img">
+
+    <div class="final-btns">
+
+      <button id="yesBtn" onclick="yesLove()">YES 😍</button>
+
+      <button id="noBtn" onmouseover="moveNo()">NO 😏</button>
+
+    </div>
+
+    <div id="loveMsg"></div>
+
+  </div>
+
+</section>
+
+
+  </div>
+
+</section>
+
+
+<script>
+
+function showMessage(n){
+  for(let i=1;i<=4;i++){
+    document.getElementById("msg"+i).style.display="none";
+  }
+  document.getElementById("msg"+n).style.display="block";
+}
+
+function goToPage2(){
+  page1.style.display="none";
+  page2.style.display="flex";
+}
+
+function goToPage3(){
+  page2.style.display="none";
+  page3.style.display="flex";
+}
+
+function goToPage4(){
+  page3.style.display="none";
+  page4.style.display="flex";
+}
+
+function goToPage5(){
+  page4.style.display="none";
+  page5.style.display="flex";
+}
+
+function showText(n){
+  for(let i=1;i<=4;i++){
+    document.getElementById("t"+i).style.display="none";
+  }
+  document.getElementById("t"+n).style.display="block";
+}
+
+function yesLove(){
+
+  let msg = document.getElementById("loveMsg");
+
+  msg.innerHTML = "I LOVE YOU FOREVER ❤️💍🌹";
+
+  // مؤثرات منتشرة بكل الشاشة
+  for(let i=0;i<60;i++){
+
+    let el = document.createElement("div");
+
+    let icons = ["❤️","🌸","🌹","💖","✨","🎉","💍"];
+
+    el.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+
+    el.style.position="fixed";
+
+    // توزيع عشوائي بكل الشاشة
+    el.style.left = Math.random()*100 + "vw";
+    el.style.top  = Math.random()*100 + "vh";
+
+    el.style.fontSize = (20+Math.random()*35)+"px";
+
+    el.style.animation = "loveBoom 3s ease-out";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+      el.remove();
+    },3000);
+  }
+}
+
+
+  // قلوب وورود ومفرقعات
+  for(let i=0;i<40;i++){
+
+    let el = document.createElement("div");
+
+    let icons = ["❤️","🌸","🌹","💖","✨","🎉"];
+    el.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+
+    el.style.position="fixed";
+    el.style.left=Math.random()*100+"vw";
+    el.style.top="100vh";
+    el.style.fontSize=(20+Math.random()*30)+"px";
+    el.style.animation="loveRain 3s linear";
+
+    document.body.appendChild(el);
+
+    setTimeout(()=>{
+      el.remove();
+    },3000);
+  }
+
+
+
+function moveNo(){
+  let btn=document.getElementById("noBtn");
+  btn.style.left=Math.random()*200+"px";
+  btn.style.top=Math.random()*80+"px";
+}
+
+
+window.addEventListener("load", () => {
+  const music = document.getElementById("bgMusic");
+
+  // محاولة تشغيل تلقائي
+  music.play().catch(() => {
+
+    // إذا فشل، شغله عند أول تفاعل
+    const startMusic = () => {
+      music.play();
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("touchstart", startMusic);
+    };
+
+    document.addEventListener("click", startMusic);
+    document.addEventListener("touchstart", startMusic);
+  });
+});
+</script>
+
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+</body>
+</html>
+
+
+
+
+
+
+
