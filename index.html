@@ -525,25 +525,6 @@ function moveNo(){
   btn.style.left=Math.random()*200+"px";
   btn.style.top=Math.random()*80+"px";
 }
-
-
-window.addEventListener("load", () => {
-  const music = document.getElementById("bgMusic");
-
-  // محاولة تشغيل تلقائي
-  music.play().catch(() => {
-
-    // إذا فشل، شغله عند أول تفاعل
-    const startMusic = () => {
-      music.play();
-      document.removeEventListener("click", startMusic);
-      document.removeEventListener("touchstart", startMusic);
-    };
-
-    document.addEventListener("click", startMusic);
-    document.addEventListener("touchstart", startMusic);
-  });
-});
 </script>
 
 
